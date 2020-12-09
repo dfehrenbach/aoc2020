@@ -5,7 +5,8 @@
             [aoc2020.day4.core :as day4]
             [aoc2020.day5.core :as day5]
             [aoc2020.day6.core :as day6]
-            [aoc2020.day7.core :as day7]))
+            [aoc2020.day7.core :as day7]
+            [aoc2020.day8.core :as day8]))
 
 (comment
   day1/part1
@@ -42,6 +43,11 @@
   ;; => 205
   day7/part2
   ;; => 80902
+
+  day8/part1
+  ;; => 2058
+  day8/part2
+  ;; => 1000
 
   0)
 
