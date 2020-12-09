@@ -1,6 +1,5 @@
 (ns aoc2020.day7.core
-  (:require [clojure.string :as string]
-            [clojure.string :as str]))
+  (:require [clojure.string :as string]))
 
 (def input-file (slurp "./src/aoc2020/day7/resources/input1.txt"))
 
@@ -21,7 +20,7 @@
         (assoc-in acc [root key] (Integer/parseInt num))))))
 
 (defn create-edges [line]
-  (let [[root & contents] (vec (str/split line bags-regex))]
+  (let [[root & contents] (vec (string/split line bags-regex))]
     (reduce (build-single-edge-map (create-keyword root) contents) {} contents)))
 
 (defn travel-up-edges [edge-map]
@@ -47,7 +46,7 @@
        next-bags))
 
 (defn addup-down-edges [edge-map]
-  (loop [next-bags (:shiny-gold part2)
+  (loop [next-bags (:shiny-gold (apply merge (map create-edges input)))
          bag-count 0]
     (if (empty? next-bags) bag-count
         (recur (apply merge-with + (calc-child-bag-contents edge-map next-bags))

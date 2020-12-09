@@ -3,7 +3,6 @@
 
 (def input-file (slurp "./src/aoc2020/day5/resources/input1.txt"))
 
-
 (def input (->> input-file
                 string/split-lines))
 
