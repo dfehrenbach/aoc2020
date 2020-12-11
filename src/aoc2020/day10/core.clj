@@ -1,6 +1,5 @@
 (ns aoc2020.day10.core
-  (:require [clojure.string :as string]
-            [clojure.string :as str]))
+  (:require [clojure.string :as string]))
 
 
 (def input-file (slurp "./src/aoc2020/day10/resources/input1.txt"))
@@ -33,7 +32,7 @@
 
 (defn group-insignificant-ones [lengths]
   (filter seq
-          (map #(str/replace % #"3" "")
+          (map #(string/replace % #"3" "")
                (string/split (string/join lengths) #"13"))))
 
 (defn group-to-permutations [group]
