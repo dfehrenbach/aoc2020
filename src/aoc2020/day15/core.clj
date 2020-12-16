@@ -27,6 +27,15 @@
     (conj (vec xs) newval)))
 
 (defn play-game [stopping-turn numbers]
+  ;; turn <- lookback
+  ;; if number even farther back exists
+  ;;    difference between past turn and pastval, asign to turn
+  ;;    0, asign to turn
+  ;; ALT
+  ;; turn calculate next
+  ;; if number exists
+  ;;   difference between this turn and pastval, asign to NEXT turn
+  ;;   0, asign to NEXT turn
   (loop [numbers      numbers
          current-turn (inc (count numbers))
          last-num     (last (keys numbers))]
@@ -38,6 +47,15 @@
                  number-to-speak)))))
 
 
+#_(defn play-game2 [stopping-turn numbers]
+    (loop [numbers      numbers
+           current-turn (inc (count numbers))]
+      (let [number-to-speak ])
+      ))
+
+
+
+
 
 (def part1
   (->> input
@@ -45,29 +63,20 @@
        (play-game 2021)
        :last-num))
 
-#_(def part2
-    (->> input
-         setup-game
-         (play-game 30000001)
-         :last-num))
+(def part2
+  (->> input
+       setup-game
+       (play-game 30000001)
+       :last-num))
 
 (comment
 
   input
-
+  ;; => (2 20 0 4 1 17)
   part1
+  ;; => 758
+  part2
+  ;; => 814
 
-
-  (:numbers (->> [0 3 6]
-                 setup-game
-                 play-game) )
-
-  (->> input
-       setup-game
-       (play-game 30000001)
-       :last-num)
-  ;; => 
-  (+ 1 2)
-  ;; => 3
   0)
 
