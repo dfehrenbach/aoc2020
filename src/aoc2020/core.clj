@@ -13,7 +13,8 @@
             [aoc2020.day12.core :as day12]
             [aoc2020.day13.core :as day13]
             [aoc2020.day14.core :as day14]
-            [aoc2020.day15.core :as day15]))
+            [aoc2020.day15.core :as day15]
+            [aoc2020.day16.core :as day16]))
 
 (comment
   day1/part1
@@ -90,6 +91,11 @@
   ;; => 758
   day15/part2
   ;; => 814
+
+  day16/part1
+  ;; => 26053
+  day16/part2
+  ;; => 1515506256421
 
   0)
 
