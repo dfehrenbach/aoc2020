@@ -14,7 +14,8 @@
             [aoc2020.day13.core :as day13]
             [aoc2020.day14.core :as day14]
             [aoc2020.day15.core :as day15]
-            [aoc2020.day16.core :as day16]))
+            [aoc2020.day16.core :as day16]
+            [aoc2020.day17.core :as day17]))
 
 (comment
   day1/part1
@@ -97,5 +98,9 @@
   day16/part2
   ;; => 1515506256421
 
-  0)
+  day17/part1
+  ;; => 295
+  day17/part2
+  ;; => 1972
 
+  0)
