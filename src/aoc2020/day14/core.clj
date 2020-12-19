@@ -46,11 +46,12 @@
                  (set-memory (first instructions) current-mask memory)
                  memory)))))
 
-(def part1 (->> input
-                (map transform-line)
-                perform-instructions
-                vals
-                (reduce +)))
+(defn part1 []
+  (->> input
+       (map transform-line)
+       perform-instructions
+       vals
+       (reduce +)))
 
 (defn find-xs [mask]
   (->> mask
@@ -65,9 +66,9 @@
         fnsets      (combo/selections [bit-clear bit-set] (count pos-of-xs))
         memory-locs (map (fn [fns]
                            (reduce
-                             (fn [acc [i f]] (f acc i))
-                             or-loc
-                             (map vector pos-of-xs fns)))
+                            (fn [acc [i f]] (f acc i))
+                            or-loc
+                            (map vector pos-of-xs fns)))
                          fnsets)]
     (reduce (fn [acc loc] (assoc acc loc (:val instruction)))
             memory
@@ -86,21 +87,21 @@
                  (set-floating-memory (first instructions) current-mask memory)
                  memory)))))
 
-(def part2 (->> input
-                (map transform-line)
-                perform-floating-instructions
-                vals
-                (reduce +)))
+(defn part2 []
+  (->> input
+       (map transform-line)
+       perform-floating-instructions
+       vals
+       (reduce +)))
 
 (comment
 
   input
 
-  part1
+  (part1)
   ;; => 15403588588538
 
-  part2
+  (part2)
   ;; => 3260587250457
 
   0)
-

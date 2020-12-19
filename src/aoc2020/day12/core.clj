@@ -61,7 +61,7 @@
   (+ (Math/abs x)
      (Math/abs y)))
 
-(def part1
+(defn part1 []
   (->> input
        (map parse-input)
        move-ship
@@ -129,7 +129,7 @@
           (recur (rest instructions)
                  new-ship-state)))))
 
-(def part2
+(defn part2 []
   (->> input
        (map parse-input)
        move-waypoint-and-ship
@@ -141,8 +141,8 @@
 
   input
 
-  part1
+  (part1)
 
-  part2
+  (part2)
 
   0)

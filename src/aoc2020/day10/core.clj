@@ -25,10 +25,11 @@
        (partition 2 1)
        (map #(- (second %) (first %)))))
 
-(def part1 (->> input
-                get-lengths-between-adapters
-                frequencies
-                mult-1-and-3))
+(defn part1 []
+  (->> input
+       get-lengths-between-adapters
+       frequencies
+       mult-1-and-3))
 
 (defn group-insignificant-ones [lengths]
   (filter seq
@@ -43,7 +44,7 @@
     "11"  4
     "111" 7))
 
-(def part2
+(defn part2 []
   (->> input
        get-lengths-between-adapters
        group-insignificant-ones
@@ -54,10 +55,10 @@
 
   input
 
-  part1
+  (part1)
   ;; => 1917
 
-  part2
+  (part2)
   ;; => 113387824750592
 
   0)

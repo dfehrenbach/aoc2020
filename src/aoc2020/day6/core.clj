@@ -12,7 +12,7 @@
 (defn count-unique-answers [group-answers]
   (count (set (string/replace group-answers #" " ""))))
 
-(def part1
+(defn part1 []
   (reduce + (map count-unique-answers input)))
 
 
@@ -21,7 +21,7 @@
     (count (apply clojure.set/intersection (map set answers-per-person)))))
 
 
-(def part2
+(defn part2 []
   (reduce + (map count-consensus-answers input)))
 
 
@@ -29,8 +29,8 @@
 
   input
 
-  part1
+  (part1)
 
-  part2
+  (part2)
 
   0)

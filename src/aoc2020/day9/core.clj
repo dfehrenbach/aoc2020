@@ -22,7 +22,7 @@
       (if (not (has-addends? set25 next-x)) next-x
           (recur (rest xs))))))
 
-(def part1
+(defn part1 []
   (check-numbers input))
 
 (defn check-reductions [integer-list bad-num]
@@ -32,7 +32,7 @@
       (if (= (last possibilities) bad-num) [i possibilities]
           (recur (rest xs) (inc i))))))
 
-(def part2
+(defn part2 []
   (let [bad-num            (check-numbers input)
         [i reduction]      (check-reductions (filter #(< % bad-num) input) bad-num)
         subrange           (subvec (vec input) i (+ i (count reduction)))
@@ -43,9 +43,9 @@
 
   input
 
-  part1
+  (part1)
   ;; => 731031916
 
-  part2
+  (part2)
   ;; => 93396727N
   0)

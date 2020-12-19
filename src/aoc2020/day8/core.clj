@@ -17,18 +17,18 @@
     "jmp" [(+ ind num) acc (conj visited ind)]
     "nop" [(inc ind) acc (conj visited ind)]))
 
-(defn perform-instructions [ instructions]
+(defn perform-instructions [instructions]
   (loop [instructions instructions
          ind          0
          acc          0
          visited      #{}]
-    (if (contains? visited ind) {:acc acc :ind ind :visited visited :exit false }
+    (if (contains? visited ind) {:acc acc :ind ind :visited visited :exit false}
         (if (= ind (count instructions)) {:acc acc :ind ind :visited visited :exit true}
             (let [instruction                      (get instructions ind)
                   [next-ind next-acc next-visited] (update-data (:instruction instruction) (:num instruction) ind acc visited)]
               (recur instructions next-ind next-acc next-visited))))))
 
-(def part1
+(defn part1 []
   (->> input
        (mapv convert-to-instruction)
        perform-instructions
@@ -37,7 +37,7 @@
 (defn flip-instruction [ind instructions]
   (update-in instructions [ind :instruction] #(if (= "jmp" %) "nop" "jmp")))
 
-(def part2
+(defn part2 []
   (let [instructions (mapv convert-to-instruction input)
         part1-res    (perform-instructions instructions)
         jmp-or-nop   (filter (fn [ind]
@@ -54,10 +54,8 @@
 
   input
 
-  part1
+  (part1)
 
-  part2
+  (part2)
 
-  0 )
-
-
+  0)

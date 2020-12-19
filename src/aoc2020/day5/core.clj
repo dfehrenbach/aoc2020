@@ -32,10 +32,10 @@
 
 (defn do-calculations [input]
   (map (comp
-         calc-seat-id
-         update-row
-         update-col
-         extract-instructions)
+        calc-seat-id
+        update-row
+        update-col
+        extract-instructions)
        input))
 
 (defn scan-for-adjacent-ids [seat-ids]
@@ -49,13 +49,13 @@
                           (contains? id-set (dec id))))
                    possible-seat-ids))))
 
-(def part1
+(defn part1 []
   (->> input
        do-calculations
        (apply max-key :seat-id)
        :seat-id))
 
-(def part2
+(defn part2 []
   (->> input
        do-calculations
        (map :seat-id)
@@ -65,8 +65,8 @@
 
   input
 
-  part1
+  (part1)
 
-  part2
+  (part2)
 
   0)

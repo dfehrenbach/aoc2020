@@ -36,7 +36,7 @@
   (let [allranges (reduce clojure.set/union (vals (:fields input)))]
     (filter #(not (contains? allranges %)) ticket)))
 
-(def part1
+(defn part1 []
   (->> (:nearby-tickets input)
        (mapcat collect-bad-vals)
        (reduce +)))
@@ -94,7 +94,7 @@
 (defn select-departure-info [m]
   (select-keys m [:departure-time :departure-platform :departure-station :departure-location :departure-track :departure-date]))
 
-(def part2
+(defn part2 []
   (->> (:nearby-tickets input)
        (map collect-bad-vals)
        clean-tickets
@@ -110,13 +110,9 @@
 
   input
 
-  part1
+  (part1)
   ;; => 26053
-  part2
+  (part2)
   ;; => 1515506256421
 
   0)
-
-
-
-

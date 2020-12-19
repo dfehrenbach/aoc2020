@@ -71,14 +71,14 @@
         (recur next-seat-map opts))))
 
 (def part1-opts {:nearby-num 4 :surrounding-fn scan-surroundings})
-(def part1
+(defn part1 []
   (-> (seat-dance input part1-opts)
       vals
       frequencies
       (get \#)))
 
 (def part2-opts {:nearby-num 5 :surrounding-fn scan-sightlines})
-(def part2
+(defn part2 []
   (-> (seat-dance input part2-opts)
       vals
       frequencies
@@ -88,8 +88,8 @@
 
   input
 
-  part1
+  (part1)
   ;; => 2178
-  part2
+  (part2)
   ;; => 1978
   0)

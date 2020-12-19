@@ -33,7 +33,7 @@
                                        (keys m)))]
           (recur m parent-bags (clojure.set/union container-bags parent-bags))))))
 
-(def part1
+(defn part1 []
   (let [edge-map (apply merge (map create-edges input))]
     (count (travel-up-edges edge-map))))
 
@@ -41,8 +41,8 @@
   (map (fn [[color num]]
          (if (not (map? (color edge-map))) {}
              (zipmap
-               (keys (color edge-map))
-               (map (partial * num) (vals (color edge-map))))))
+              (keys (color edge-map))
+              (map (partial * num) (vals (color edge-map))))))
        next-bags))
 
 (defn addup-down-edges [edge-map]
@@ -52,16 +52,15 @@
         (recur (apply merge-with + (calc-child-bag-contents edge-map next-bags))
                (+ bag-count (reduce + (vals next-bags)))))))
 
-(def part2
+(defn part2 []
   (let [edge-map (apply merge (map create-edges input))]
     (addup-down-edges edge-map)))
 
 (comment
   input
 
-  part1
+  (part1)
 
-  part2
+  (part2)
 
   0)
-

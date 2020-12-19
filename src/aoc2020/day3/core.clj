@@ -6,10 +6,10 @@
 (def input (->> input-file
                 str/split-lines))
 
-(defn tree? [ ch ]
+(defn tree? [ch]
   (= \# ch))
 
-(def part1
+(defn part1 []
   (let [pattern-len (count (first input))
         inf-indexes (iterate #(rem (+ 3 %) pattern-len) 0)
         slope-data  (map (fn [slope1 terrain-line]
@@ -17,7 +17,7 @@
                          inf-indexes input)]
     (count (filter :tree slope-data))))
 
-(def part2
+(defn part2 []
   (let [pattern-len      (count (first input))
         slope1-indexes   (iterate #(rem (+ 1 %) pattern-len) 0)
         slope3-indexes   (iterate #(rem (+ 3 %) pattern-len) 0)
@@ -49,10 +49,10 @@
 
   input
 
-  part1
+  (part1)
   ;; => 223
 
-  part2
+  (part2)
   ;; => 3517401300
 
   0)

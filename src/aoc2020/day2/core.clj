@@ -21,7 +21,7 @@
       (or ((frequencies (:password m)) (first (:letter m))) -1)
       (:high m)))
 
-(def part1
+(defn part1 []
   (let [valid-passwords (filter validate-password-part1 input)]
     (count valid-passwords)))
 
@@ -31,14 +31,14 @@
         ch (first (:letter m))]
     (not= (= a ch) (= b ch))))
 
-(def part2
+(defn part2 []
   (let [valid-passwords (filter validate-password-part2 input)]
     (count valid-passwords)))
 
 (comment
 
-  part1
+  (part1)
 
-  part2
+  (part2)
 
   0)

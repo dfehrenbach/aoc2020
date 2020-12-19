@@ -22,7 +22,7 @@
 (defn convert-to-answer [earliest-time bus]
   (* (:bus bus) (- (:time bus) earliest-time)))
 
-(def part1
+(defn part1 []
   (let [[earliest-time bus-info] input
         time                     (Integer/parseInt earliest-time)]
     (->> bus-info
@@ -45,9 +45,9 @@
     (if (zero? r) {:coefficients [old-s old-t] :gcd old-r :quotients-by-gcd [t s]}
         (let [quotient (bigint (/ old-r r))]
           (recur
-            [r, (- old-r (* quotient r))]
-            [s, (- old-s (* quotient s))]
-            [t, (- old-t (* quotient t))])))))
+           [r, (- old-r (* quotient r))]
+           [s, (- old-s (* quotient s))]
+           [t, (- old-t (* quotient t))])))))
 
 (defn crazy-lcm [a b]
   (println a)
@@ -60,7 +60,7 @@
         phase   (mod (+ (* (* -1 m) (:bus a)) (:interval a)) periodC)]
     {:bus (math/lcm (:bus a) (:bus b)) :interval phase :collide x}))
 
-(def part2
+(defn part2 []
   (let [[_ bus-info] input]
     (->> bus-info
          extract-running-buses-with-intervals
@@ -71,9 +71,9 @@
 
   input
 
-  part1
+  (part1)
   ;; => 3606
-  part2
+  (part2)
   ;; => 379786358533423N
 
   0)

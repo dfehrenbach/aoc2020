@@ -14,9 +14,9 @@
 
 (defn setup-game [numbers]
   (reduce
-    (fn [acc [i number]]
-      (assoc acc number [(inc i)]))
-    {} (map-indexed vector numbers)))
+   (fn [acc [i number]]
+     (assoc acc number [(inc i)]))
+   {} (map-indexed vector numbers)))
 
 (defn one? [xs]
   (= 1 (count xs)))
@@ -27,15 +27,6 @@
     (conj (vec xs) newval)))
 
 (defn play-game [stopping-turn numbers]
-  ;; turn <- lookback
-  ;; if number even farther back exists
-  ;;    difference between past turn and pastval, asign to turn
-  ;;    0, asign to turn
-  ;; ALT
-  ;; turn calculate next
-  ;; if number exists
-  ;;   difference between this turn and pastval, asign to NEXT turn
-  ;;   0, asign to NEXT turn
   (loop [numbers      numbers
          current-turn (inc (count numbers))
          last-num     (last (keys numbers))]
@@ -46,24 +37,13 @@
                  (inc current-turn)
                  number-to-speak)))))
 
-
-#_(defn play-game2 [stopping-turn numbers]
-    (loop [numbers      numbers
-           current-turn (inc (count numbers))]
-      (let [number-to-speak ])
-      ))
-
-
-
-
-
-(def part1
+(defn part1 []
   (->> input
        setup-game
        (play-game 2021)
        :last-num))
 
-(def part2
+(defn part2 []
   (->> input
        setup-game
        (play-game 30000001)
@@ -73,10 +53,9 @@
 
   input
   ;; => (2 20 0 4 1 17)
-  part1
+  (part1)
   ;; => 758
-  part2
+  (part2)
   ;; => 814
 
   0)
-

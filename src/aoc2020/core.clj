@@ -18,89 +18,89 @@
             [aoc2020.day17.core :as day17]))
 
 (comment
-  day1/part1
+  (day1/part1)
   ;; => {:x 21, :y 1999, :result 41979}
-  day1/part2
+  (day1/part2)
   ;; => {:x 277, :y 624, :z 1119, :result 193416912}
 
-  day2/part1
+  (day2/part1)
   ;; => 569
-  day2/part2
+  (day2/part2)
   ;; => 346
 
-  day3/part1
+  (day3/part1)
   ;; => 223
-  day3/part2
+  (day3/part2)
   ;; => 3517401300
 
-  day4/part1
+  (day4/part1)
   ;; => 233
-  day4/part2
+  (day4/part2)
   ;; => 111
 
-  day5/part1
+  (day5/part1)
   ;; => 858
-  day5/part2
+  (day5/part2)
   ;; => 557
 
-  day6/part1
+  (day6/part1)
   ;; => 6930
-  day6/part2
+  (day6/part2)
   ;; => 3585
 
-  day7/part1
+  (day7/part1)
   ;; => 205
-  day7/part2
+  (day7/part2)
   ;; => 80902
 
-  day8/part1
+  (day8/part1)
   ;; => 2058
-  day8/part2
+  (day8/part2)
   ;; => 1000
 
-  day9/part1
+  (day9/part1)
   ;; => 731031916
-  day9/part2
+  (day9/part2)
   ;; => 93396727N
 
-  day10/part1
+  (day10/part1)
   ;; => 1917
-  day10/part2
+  (day10/part2)
   ;; => 113387824750592
 
-  day11/part1
+  (day11/part1)
   ;; => 2178
-  day11/part2
+  (day11/part2)
   ;; => 1978
 
-  day12/part1
+  (day12/part1)
   ;; => 1589
-  day12/part2
+  (day12/part2)
   ;; => 23960
 
-  day13/part1
+  (day13/part1)
   ;; => 3606
-  day13/part2
+  (day13/part2)
   ;; => 379786358533423N
 
-  day14/part1
+  (day14/part1)
   ;; => 15403588588538
-  day14/part2
+  (day14/part2)
   ;; => 3260587250457
 
-  day15/part1
+  (day15/part1)
   ;; => 758
-  day15/part2
+  (day15/part2)
   ;; => 814
 
-  day16/part1
+  (day16/part1)
   ;; => 26053
-  day16/part2
+  (day16/part2)
   ;; => 1515506256421
 
-  day17/part1
+  (day17/part1)
   ;; => 295
-  day17/part2
+  (day17/part2)
   ;; => 1972
 
   0)

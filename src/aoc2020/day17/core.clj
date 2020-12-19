@@ -88,14 +88,14 @@
 (defn count-active-cubes [dimension]
   (count (filter (partial = \#) (vals dimension))))
 
-(def part1
+(defn part1 []
   (->> (transform-to-3d input)
        (iterate (partial perform-cycle neighbors))
        (drop 6)
        first
        count-active-cubes))
 
-(def part2
+(defn part2 []
   (->> (transform-to-4d input)
        (iterate (partial perform-cycle neighbors-4d))
        (drop 6)
@@ -103,8 +103,8 @@
        count-active-cubes))
 
 (comment
-  part1
+  (part1)
 
-  part2
+  (part2)
 
   0)

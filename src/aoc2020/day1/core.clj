@@ -7,29 +7,28 @@
                 str/split-lines
                 (mapv #(Integer/parseInt %))))
 
-(def part1
+(defn part1 []
   (first
-    (filter #(not (nil? %))
-            (for [x (set input)
-                  y (set (filter #(<= (- 2020 x) %) input))]
-              (if (= 2020 (+ x y))
-                {:x x :y y :result (* x y)})))))
+   (filter #(not (nil? %))
+           (for [x (set input)
+                 y (set (filter #(<= (- 2020 x) %) input))]
+             (if (= 2020 (+ x y))
+               {:x x :y y :result (* x y)})))))
 
-(def part2
+(defn part2 []
   (first
-    (filter #(not (nil? %))
-            (for [x (set input)
-                  y (set (filter #(<= % (- 2020 x)) input))
-                  z (set (filter #(<= % (- 2020 x y)) input))]
-              (if (= 2020 (+ x y z))
-                {:x x :y y :z z :result (* x y z)})))))
+   (filter #(not (nil? %))
+           (for [x (set input)
+                 y (set (filter #(<= % (- 2020 x)) input))
+                 z (set (filter #(<= % (- 2020 x y)) input))]
+             (if (= 2020 (+ x y z))
+               {:x x :y y :z z :result (* x y z)})))))
 
 (comment
   input
 
-  part1
+  (part1)
 
-  part2
+  (part2)
 
   0)
-
