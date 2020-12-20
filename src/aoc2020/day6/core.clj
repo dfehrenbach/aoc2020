@@ -1,5 +1,6 @@
 (ns aoc2020.day6.core
-  (:require [clojure.string :as string]))
+  (:require [clojure.string :as string]
+            [clojure.set :refer [intersection]]))
 
 
 (def input-file (slurp "./src/aoc2020/day6/resources/input1.txt"))
@@ -18,7 +19,7 @@
 
 (defn count-consensus-answers [group-answers]
   (let [answers-per-person (string/split group-answers #" ")]
-    (count (apply clojure.set/intersection (map set answers-per-person)))))
+    (count (apply intersection (map set answers-per-person)))))
 
 
 (defn part2 []
