@@ -72,7 +72,8 @@
    {:name "John Paul" :rank 3 :coming 3}
    {:name "John Paul SO" :rank 3 :coming 4}
    {:name "Elizabeth" :rank 3 :coming 3}
-   {:name "Elizabeth SO" :rank 3 :coming 4}])
+   {:name "Elizabeth SO" :rank 3 :coming 4}
+   {:name "Father (dad's friend)" :rank 1 :coming 4}])
 
 (defn trim-below-rank-above-coming [{:keys [rank coming]} side]
   (filter (fn [person]
@@ -80,44 +81,23 @@
                  (< coming (:coming person))))
           side))
 
+(def all (partial trim-below-rank-above-coming {:rank 10 :coming 0}))
 (def trim-likely (partial trim-below-rank-above-coming {:rank 4 :coming 2}))
 (def trim-definitely (partial trim-below-rank-above-coming {:rank 4 :coming 3}))
 
+(defn full-count [trimfn & sides]
+  (let [sidecounts (vec (map (comp count trimfn) sides))]
+    (conj sidecounts {:sum (reduce + sidecounts)})))
+
 (comment
 
-  (count dad-side)
-  ;; => 26
-  (count mom-side)
-  ;; => 19
-  (count others)
-  ;; => 16
-  (count (concat dad-side mom-side others))
-  ;; => 61
+  (full-count all dad-side mom-side others)
+  ;; => [26 19 17 {:sum 62}]
 
-  (count (trim-likely dad-side))
-  ;; => 15
-  (count (trim-likely mom-side))
-  ;; => 13
-  (count (trim-likely others))
-  ;; => 13
+  (full-count trim-likely dad-side mom-side others)
+  ;; => [15 13 14 {:sum 42}]
 
-  (count (concat
-          (trim-likely dad-side)
-          (trim-likely mom-side)
-          (trim-likely others)))
-  ;; => 41
-
-  (count (trim-definitely dad-side))
-  ;; => 6
-  (count (trim-definitely mom-side))
-  ;; => 5
-  (count (trim-definitely others))
-  ;; => 5
-
-  (count (concat
-          (trim-definitely dad-side)
-          (trim-definitely mom-side)
-          (trim-definitely others)))
-  ;; => 16
+  (full-count trim-definitely dad-side mom-side others)
+  ;; => [6 5 6 {:sum 17}]
 
   0)
