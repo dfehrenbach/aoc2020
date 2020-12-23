@@ -148,7 +148,8 @@
          working-ids #{(key (first tilemap))}
          locked-ids #{}
          iteration 0]
-    (if (< 100 iteration) [:break tilemap]
+    (println iteration (count working-ids) (count locked-ids))
+    (if (< 100000 iteration) [:break tilemap]
         (if (= (count locked-ids) (count tilemap)) tilemap
             (let [edge-info (all-edges-with-info tilemap)
                   reversed-edges (map (fn [edge] (-> edge
@@ -162,20 +163,6 @@
                      (set (remove nil? next-working-ids))
                      (union locked-ids working-ids)
                      (inc iteration)))))))
-
-;; fn [tilemap]
-;; (loop [tilemap tilemap
-;;        working-ids #{(:id (first tilemap))}
-;;        locked-ids #{}]
-;;   (if (= (count locked-ids) (count tilemap)) tilemap
-;;    let [matched-edges (vals (group-by :tile (concat edges (reversed edges)))))
-;;        filtered-working-edges (filter (partial matches-id working-ids) matched-edges)
-;;        next-working-ids (map (comp :id second) matched-edges)
-;;        flip-fns (create-flip-fns filtered-working-edges)
-;;        new-tilemap ((comp flip-fns) tilemap)]
-;;     (recur newtilemap
-;;            (set filtered-working-edge-ids)
-;;            (set/union locked-ids working-ids)))
 
 (comment
 
@@ -193,7 +180,9 @@
   (def penguin (->> input (map parse-tile) (apply merge)))
   (all-edges-with-info penguin)
   (def penguin2 (stitch-tiles penguin))
-  (all-edges-with-info penguin2)
+  penguin2
+
+  (count (filter (comp (partial = 1) count second) (group-by :tile (all-edges-with-info penguin2))))
 
 
   (count (filter (comp (partial = 2) count second) (group-by :tile (all-edges-with-info penguin2))))
@@ -205,6 +194,7 @@
                                                        (assoc :reversed true)))
                                         (all-edges-with-info penguin2))))))
 
+  (count (filter (comp (partial = 1) count second) elephant))
 
   (mapcat (partial get-tile-pairs elephant) #{2069})
   (reduce flip-rotate-tile penguin (mapcat (partial get-tile-pairs elephant) #{2069}))
