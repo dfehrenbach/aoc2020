@@ -19,7 +19,8 @@
             [aoc2020.day18.core :as day18]
             [aoc2020.day19.core :as day19]
             [aoc2020.day20.core :as day20]
-            [aoc2020.day21.core :as day21]))
+            [aoc2020.day21.core :as day21]
+            [aoc2020.day22.core :as day22]))
 
 (comment
   (day1/part1)
@@ -124,5 +125,10 @@
   ;; => 1685
   (day21/part2)
   ;; => "ntft,nhx,kfxr,xmhsbd,rrjb,xzhxj,chbtp,cqvc"
+
+  (day22/part1)
+  ;; => 31781
+  (day22/part2)
+  ;; => 35154
 
   0)
